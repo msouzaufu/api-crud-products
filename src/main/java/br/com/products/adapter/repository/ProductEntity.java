@@ -1,25 +1,17 @@
 package br.com.products.adapter.repository;
 
-import lombok.Getter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "product")
 class ProductEntity {
-
-    public ProductEntity setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public ProductEntity setId(String id) {
-        this.id = id;
-        return this;
-    }
 
     @Id
     @GeneratedValue(generator = "uuid")

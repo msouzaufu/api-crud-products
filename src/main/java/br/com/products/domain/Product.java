@@ -1,26 +1,24 @@
 package br.com.products.domain;
 
-public class Product {
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = -6709949360695646993L;
 
     private String id;
 
     private String name;
 
-    public String getId() {
-        return id;
-    }
+    private String description;
 
-    public Product setId(String id) {
-        this.id = id;
-        return this;
-    }
+    private BigDecimal price;
 
-    public String getName() {
-        return name;
-    }
-
-    public Product setName(String name) {
-        this.name = name;
-        return this;
-    }
 }

@@ -1,28 +1,17 @@
 package br.com.products.adapter.controller;
 
-import java.io.Serializable;
+import lombok.Data;
 
-class ProductResponseDTO implements Serializable {
+import java.math.BigDecimal;
+
+@Data
+class ProductResponseDTO {
 
     private String id;
 
     private String name;
 
-    public String getId() {
-        return id;
-    }
+    private String description;
 
-    public ProductResponseDTO setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ProductResponseDTO setName(String name) {
-        this.name = name;
-        return this;
-    }
+    private BigDecimal price;
 }
