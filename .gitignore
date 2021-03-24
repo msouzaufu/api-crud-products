@@ -82,3 +82,8 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+/mvnw
+/mvnw.cmd
+/.mvn/wrapper/maven-wrapper.properties
+/.mvn/wrapper/MavenWrapperDownloader.java
+/HELP.md
