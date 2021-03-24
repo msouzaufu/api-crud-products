@@ -1,5 +1,6 @@
 package br.com.products.adapter.controller;
 
+import br.com.products.adapter.controller.dto.CreateProductDTO;
 import br.com.products.domain.Product;
 import br.com.products.usecase.CreateProduct;
 import br.com.products.usecase.DeleteProduct;
