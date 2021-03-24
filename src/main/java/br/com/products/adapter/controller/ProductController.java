@@ -2,6 +2,7 @@ package br.com.products.adapter.controller;
 
 import br.com.products.adapter.controller.dto.CreateProductDTO;
 import br.com.products.adapter.controller.dto.ProductResponseDTO;
+import br.com.products.domain.Product;
 import br.com.products.usecase.CreateProduct;
 import br.com.products.usecase.DeleteProduct;
 import br.com.products.usecase.FindProduct;
@@ -59,11 +60,11 @@ class ProductController {
         return ResponseEntity.ok(ProductMapper.INSTANCE.mapFrom(findProduct.all()));
     }
 
-//    @DeleteMapping(path = "/{id}")
-//    ResponseEntity delete(@PathVariable("id") String id) throws UserNotFoundException {
-//        User user = findUser.byId(id);
-//        deleteUser.delete(user);
-//        return ResponseEntity.noContent().build();
-//    }
+    @DeleteMapping(path = "/{id}")
+    ResponseEntity delete(@PathVariable("id") String id) throws ProductNotFoundException {
+        Product product = findProduct.byId(id);
+        deleteProduct.delete(product);
+        return ResponseEntity.ok().build();
+    }
 
 }
