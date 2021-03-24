@@ -17,6 +17,6 @@ public class CreateProduct {
     }
 
     public Product create(Product product) {
-        return createProductPort.createUser(product);
+        return createProductPort.createProduct(product);
     }
 }

@@ -5,5 +5,5 @@ import br.com.products.domain.Product;
 
 public interface UpdateProductPort {
 
-    Product update(Product user);
+    Product update(Product product);
 }

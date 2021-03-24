@@ -26,7 +26,7 @@ class ProductRepositoryGateway implements FindProductPort, CreateProductPort, De
     }
 
     @Override
-    public Product createUser(Product product) {
+    public Product createProduct(Product product) {
         return EntityMapper.INSTANCE.mapFrom(repository.save(EntityMapper.INSTANCE.mapFrom(product)));
     }
 
