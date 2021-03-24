@@ -1,7 +1,7 @@
 package br.com.products.usecase;
 
 import br.com.products.domain.Product;
-import br.com.products.usecase.exception.UserNotFoundException;
+import br.com.products.usecase.exception.ProductNotFoundException;
 import br.com.products.usecase.port.FindProductPort;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,8 @@ public class FindProduct {
         this.findProductPort = findProductPort;
     }
 
-    public Product byId(String id) throws UserNotFoundException {
-        return findProductPort.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    public Product byId(String id) throws ProductNotFoundException {
+        return findProductPort.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     public List<Product> all() {

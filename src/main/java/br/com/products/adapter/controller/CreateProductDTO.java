@@ -9,7 +9,7 @@ class CreateProductDTO implements Serializable {
     public String getName() {
         return name;
     }
-
+ 
     CreateProductDTO setName(String name) {
         this.name = name;
         return this;
