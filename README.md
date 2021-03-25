@@ -1,9 +1,5 @@
 # Controle de Produtos
 
-<h1>
-<img alt="NextLevelWeek" title="#NextLevelWeek" src="./docs/Triangle.png/>
-</h1>
-
 ## Api para controle de produtos 
 <p align="center">Api CRUD para gerenciamento de produtos. 🚀</p>
 
