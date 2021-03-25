@@ -5,5 +5,5 @@ import br.com.products.domain.Product;
 
 public interface CreateProductPort {
 
-    Product createUser(Product product);
+    Product createProduct(Product product);
 }
