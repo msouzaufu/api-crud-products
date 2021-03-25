@@ -1,6 +1,7 @@
 package br.com.products.adapter.repository;
 
 import br.com.products.domain.Product;
+import br.com.products.domain.QueryParameters;
 import br.com.products.usecase.port.CreateProductPort;
 import br.com.products.usecase.port.DeleteProductPort;
 import br.com.products.usecase.port.FindProductPort;
@@ -16,8 +17,11 @@ class ProductRepositoryGateway implements FindProductPort, CreateProductPort, De
 
     private final ProductRepository repository;
 
-    public ProductRepositoryGateway(ProductRepository repository) {
+    private final ProductRepositoryImpl repositoryImpl;
+
+    public ProductRepositoryGateway(ProductRepository repository, ProductRepositoryImpl repositoryImpl) {
         this.repository = repository;
+        this.repositoryImpl = repositoryImpl;
     }
 
     @Override
@@ -35,6 +39,11 @@ class ProductRepositoryGateway implements FindProductPort, CreateProductPort, De
         List<Product> products = new ArrayList<>();
         repository.findAll().forEach(productEntity -> products.add(EntityMapper.INSTANCE.mapFrom(productEntity)));
         return products;
+    }
+
+    @Override
+    public List<Product> findByParameters(QueryParameters queryParameters) {
+        return repositoryImpl.findAllByParameters(queryParameters);
     }
 
     @Override

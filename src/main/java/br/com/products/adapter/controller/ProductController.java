@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -65,6 +66,14 @@ class ProductController {
         Product product = findProduct.byId(id);
         deleteProduct.delete(product);
         return ResponseEntity.ok().build();
+    }
+
+
+    @GetMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<List<ProductResponseDTO>> searchByParameters(@RequestParam(required = false, defaultValue = "") String q,
+                                                                @RequestParam(required = false, defaultValue = "") BigDecimal min_price,
+                                                                @RequestParam(required = false, defaultValue = "") BigDecimal max_price) {
+        return ResponseEntity.ok(ProductMapper.INSTANCE.mapFrom(findProduct.getByParameters(QueryMapper.INSTANCE.mapFrom(q, min_price, max_price))));
     }
 
 }
