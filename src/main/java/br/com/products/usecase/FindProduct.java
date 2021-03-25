@@ -4,11 +4,8 @@ import br.com.products.domain.Product;
 import br.com.products.domain.QueryParameters;
 import br.com.products.usecase.exception.ProductNotFoundException;
 import br.com.products.usecase.port.FindProductPort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service

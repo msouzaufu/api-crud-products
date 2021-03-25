@@ -1,13 +1,12 @@
 package br.com.products.adapter.repository;
 
-import br.com.products.adapter.controller.ProductMapper;
 import br.com.products.domain.Product;
 import br.com.products.domain.QueryParameters;
+import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -16,13 +15,15 @@ public class ProductRepositoryImpl {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Product> findAllByParameters(QueryParameters queryParameters){
-        TypedQuery<ProductEntity> findQuery = em.createNamedQuery(ProductEntity.FIND_ALL_PRODUCTS_BY_PARAMETERS, ProductEntity.class);
-        findQuery.setParameter("name", queryParameters.getName());
-        findQuery.setParameter("min_price", queryParameters.getMin_price());
-        findQuery.setParameter("max_price", queryParameters.getMax_price());
+    public List<Product> findAllByParameters(QueryParameters queryParameters) {
 
-        var results = findQuery.getResultList();
+        QProductEntity productEntity = QProductEntity.productEntity;
+        JPAQuery<?> query = new JPAQuery<Void>(em);
+
+        List<ProductEntity> results = query.select(productEntity)
+                .from(productEntity)
+                .where(productEntity.name.likeIgnoreCase(queryParameters.getName())
+                        .and(productEntity.description.likeIgnoreCase(queryParameters.getName()))).fetch();
 
         return EntityMapper.INSTANCE.mapFrom(results);
     }
